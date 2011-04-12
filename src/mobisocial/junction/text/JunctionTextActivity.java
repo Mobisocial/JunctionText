@@ -55,12 +55,13 @@ public class JunctionTextActivity extends Activity {
     
     private void joinOrDie() {
         try {
+        	SwitchboardConfig config = new XMPPSwitchboardConfig("prpl.stanford.edu");
+        	JunctionMaker jm = JunctionMaker.getInstance(config);
         	
-        	URI invitation = URI.create("junction://prpl.stanford.edu/jxtext");
+        	URI invitation = jm.generateSessionUri();
         	URI webInvite = URI.create(Junction.toWebInvite("http://prpl.stanford.edu/junction/text", invitation.toString()));
         	mNfc.share(NdefFactory.fromUri(webInvite));
-            SwitchboardConfig config = new XMPPSwitchboardConfig("prpl.stanford.edu");
-        	JunctionMaker.getInstance(config).newJunction(invitation, mStatusUpdater);
+            jm.newJunction(invitation, mStatusUpdater);
         	// 	TODO: Junction.from(Uri invitation).bind(mRunner);
         } catch (JunctionException e) {
         	Log.e(TAG, "Could not connect to junction.");
