@@ -74,7 +74,11 @@ public class JunctionTextActivity extends Activity {
     	findViewById(R.id.submit).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				toast("Insert DB here");
+				String update = ((EditText)findViewById(R.id.status)).getText().toString();
+				Intent result = new Intent();
+				result.putExtra(Intent.EXTRA_TEXT, update);
+				setResult(RESULT_OK, result);
+				finish();
 			}
 		});
     }
