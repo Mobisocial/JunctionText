@@ -2,8 +2,8 @@ package mobisocial.junction.text;
 
 import java.net.URI;
 
+import mobisocial.nfc.NdefFactory;
 import mobisocial.nfc.Nfc;
-import mobisocial.nfc.Nfc.NdefFactory;
 
 import org.json.JSONObject;
 
